@@ -16,10 +16,11 @@
     expression = "";
 	result = null;
   }
-  const apiUrl = 'http://localhost:3000/calculate'; // Adjust the URL if your backend is hosted elsewhere
+  const apiUrl = 'http://localhost:3000/calculate';
 
   async function calculate() {
     try {
+	// request post method to back end server
       const response = await fetch('http://localhost:3000/calculate', {
         method: 'POST',
         headers: {
@@ -46,11 +47,13 @@
 <main>
   <div class="container">
 	<section class="calculator">
+		<!-- if start display expression when result is null -->
 		{#if result === null}
 			<div class="display">{expression}</div>
 		{:else}
 			<div class="display">{result}</div>
 		{/if}
+		<!-- If end -->
 		<div class="buttons">
 		  <div class="row">
 			<button on:click={() => addToExpression("7")}>7</button>
@@ -98,6 +101,7 @@
 		margin: 0 auto;
 	}
 
+	/* Calculator Screen */
 	.display {
 		background-color: #688EB5;
 		border: 1px solid #ccc;
@@ -114,6 +118,7 @@
 		grid-gap: 5px;
 	}
 
+	/* Calculator Buttons */
 	button {
 		background-color: #CEE8FF;
 		border: 1px solid #ccc;
